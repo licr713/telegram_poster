@@ -3,11 +3,11 @@ import logging
 import requests
 from telethon import TelegramClient, events
 
-# 启动时交互输入敏感配置
-API_ID = int(input('请输入 API_ID: '))
-API_HASH = input('请输入 API_HASH: ')
-N8N_WEBHOOK_URL = input('请输入 N8N_WEBHOOK_URL: ')
-TARGET_CHANNEL = input('请输入要监听的频道用户名（如 Financial_Express）: ')
+# 通过环境变量读取敏感配置，适配 Railway.app
+API_ID = int(os.getenv('API_ID'))
+API_HASH = os.getenv('API_HASH')
+N8N_WEBHOOK_URL = os.getenv('N8N_WEBHOOK_URL')
+TARGET_CHANNEL = os.getenv('TARGET_CHANNEL')
 SESSION_NAME = os.getenv('SESSION_NAME', 'telegram_listener')
 
 # 日志配置
